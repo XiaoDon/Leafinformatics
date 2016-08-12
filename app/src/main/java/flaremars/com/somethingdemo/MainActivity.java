@@ -1,20 +1,30 @@
 package flaremars.com.somethingdemo;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.CrossProcessCursor;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.soundcloud.android.crop.Crop;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,13 +51,9 @@ import flaremars.com.somethingdemo.utils.network.NetworkHandler;
 
 public class MainActivity extends AppCompatActivity implements INetworkContext {
 
-    private static final int TAKE_PHOTO_ACTION_CODE = 1;
-
     private static final int SUCCESS_CODE = 200;
 
-    private static final SimpleDateFormat PHOTO_NAME_FORMAT = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA);
-
-    private static final String BASE_URL = "http://192.168.1.155:8080/";
+    private static final String BASE_URL = "http://54.223.37.11:33333/";
 
     public static int screenWidth = 0;
 
@@ -58,10 +64,6 @@ public class MainActivity extends AppCompatActivity implements INetworkContext {
     private NetworkHandler handler;
 
     private Executor singleExecutor;
-
-    private String tempPhotoName;
-
-    private String tempPhotoPath;
 
     private int totalProgress = 0;
 
@@ -74,10 +76,18 @@ public class MainActivity extends AppCompatActivity implements INetworkContext {
 
     private CachedPicturesAdapter adapter;
 
+    //添加本地文件
+    private ImageView resultView;
+    private TextView welcome,note;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        resultView = (ImageView) findViewById(R.id.result_image);
+        welcome = (TextView) findViewById(R.id.welcometext);
+        note = (TextView) findViewById(R.id.notetext);
 
         Point screenSize = DisplayUtils.INSTANCE.getScreenWidth(this);
         screenWidth = screenSize.x;
@@ -100,19 +110,34 @@ public class MainActivity extends AppCompatActivity implements INetworkContext {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.upload) {
-            takePhotoAction();
+            Crop.pickImage(this);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == TAKE_PHOTO_ACTION_CODE) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent result) {
+        if(resultCode == RESULT_OK) {
+            if (requestCode == Crop.REQUEST_PICK) {
+                beginCrop(result.getData());
+            } else if (requestCode == Crop.REQUEST_CROP) {
+                //上传缓存图片
+                resultView.setImageDrawable(null);
+                welcome.setText("");note.setText("");
+                uploadimg(Crop.getOutput(result));
 
-                final File targetFile = new File(tempPhotoPath);
+                //清除Imageview中的缓存图片
+                //handleCrop(resultCode, result);
+            }else
+            {
+                Toast.makeText(this, Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    protected void uploadimg(final Uri tempPhotoPath){
+                final File targetFile = new File(this.getCacheDir().getAbsoluteFile().toString()+"/cropped");
                 totalProgress = (int)targetFile.length();
                 singleExecutor = Executors.newSingleThreadExecutor();
                 handler = new NetworkHandler(this);
@@ -150,9 +175,12 @@ public class MainActivity extends AppCompatActivity implements INetworkContext {
                                                         int size = dataArray.length();
                                                         BitmapBean tempBean;
                                                         JSONObject tempObject;
+                                                        tempBean = new BitmapBean( BASE_URL+"Test/ImageDownloadServlet?dirIndex=0&fileIndex=0", "原始叶片图像");
+                                                        bitmapBeanList.add(tempBean);
+
                                                         for (int i = 0; i < size; i++) {
                                                             tempObject = dataArray.getJSONObject(i);
-                                                            tempBean = new BitmapBean(tempObject.getString("url"), tempObject.getString("info"));
+                                                            tempBean = new BitmapBean(BASE_URL+tempObject.getString("url"), "相似度TOP."+(i+1)+":\n"+tempObject.getString("info")+"号叶片图像");
                                                             bitmapBeanList.add(tempBean);
                                                         }
                                                         adapter.notifyDataSetChanged();
@@ -173,21 +201,6 @@ public class MainActivity extends AppCompatActivity implements INetworkContext {
                                 });
                             }
                         }).show();
-            }
-        }
-    }
-
-    private void takePhotoAction() {
-        final File directory = FileUtils.INSTANCE.getDirectory(this, "photos", false);
-        tempPhotoName = PHOTO_NAME_FORMAT.format(new Date()) + ".jpg";
-        assert directory != null;
-        final String string = directory.getPath() + File.separator + tempPhotoName;
-        tempPhotoPath = string;
-        final File file = new File(string);
-        final Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        intent.putExtra("output", Uri.fromFile(file));
-        intent.putExtra("return-data", true);
-        startActivityForResult(intent, TAKE_PHOTO_ACTION_CODE);
     }
 
     private MaterialDialog loadingDialog;
@@ -205,11 +218,24 @@ public class MainActivity extends AppCompatActivity implements INetworkContext {
                 currentProgress = 0;
                 loadingDialog = new MaterialDialog.Builder(this)
                         .title("等待数据回复")
-                        .content("惊奇总是出现在等待之后")
+                        .content("正在全力加载！")
                         .progress(true, 0)
                         .progressIndeterminateStyle(false)
                         .show();
             }
+        }
+    }
+
+    private void beginCrop(Uri source) {
+        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+        Crop.of(source, destination).asPng(false).start(this);//asSquare()
+    }
+
+    private void handleCrop(int resultCode, Intent result) {
+        if (resultCode == RESULT_OK) {
+            resultView.setImageURI(Crop.getOutput(result));
+        } else if (resultCode == Crop.RESULT_ERROR) {
+            Toast.makeText(this, Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">SomethingDemo</string>
+    <string name="app_name">Leaves</string>
+    <string name="welcome">欢迎使用植物表型识别APP</string>
+    <string name="oprate_note">    本程序基于Leaf 100叶片表型数据库，采用高精度的图像识别处理算法，支持图像实时拍摄、本地图库上传以及裁剪功能，具体操作方法如下：\n
+        ①. 点击右上角的“上传”图标，选择合适的表型图片进行上传；\n
+        ②. 对图片进行适当“裁剪”；\n
+        ③. 点击“确定”按钮，进行上传处理，等候识别结果。
+    </string>
 </resources>

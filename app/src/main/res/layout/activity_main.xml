@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"  tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="flaremars.com.somethingdemo.MainActivity">
+
+    <TextView
+        android:id="@+id/welcometext"
+        android:text="@string/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/notetext"
+        android:text="@string/oprate_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcometext"
+        android:lineSpacingExtra="9dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15dp"/>
+
+    <ImageView
+        android:id="@+id/result_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/leaf"
+        android:layout_below="@id/notetext"
+        android:paddingLeft="100dp"/>
 
     <GridView
         android:keepScreenOn="true"
@@ -10,6 +43,7 @@
         android:id="@+id/contentView"
         android:horizontalSpacing="5dp"
         android:verticalSpacing="5dp"
-        android:numColumns="2"
+        android:numColumns="1"
         />
+
 </RelativeLayout>

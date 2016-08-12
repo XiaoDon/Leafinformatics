@@ -1,0 +1,216 @@
+[
+    {
+        "outputFile": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endColumn": 52,
+                    "endOffset": 148
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\attrs.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 153,
+                    "endColumn": 50,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 51,
+                    "endOffset": 251
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 256,
+                    "endColumn": 58,
+                    "endOffset": 310
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 315,
+                    "endColumn": 58,
+                    "endOffset": 369
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 703,
+                    "endColumn": 47,
+                    "endOffset": 746
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 751,
+                    "endColumn": 71,
+                    "endOffset": 818
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 823,
+                    "endColumn": 43,
+                    "endOffset": 862
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 867,
+                    "endColumn": 71,
+                    "endOffset": 934
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 939,
+                    "endColumn": 56,
+                    "endOffset": 991
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 996,
+                    "endColumn": 51,
+                    "endOffset": 1043
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1048,
+                    "endColumn": 24,
+                    "endOffset": 1068
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1073,
+                    "endLine": 20,
+                    "endColumn": 12,
+                    "endOffset": 1371
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1376,
+                    "endLine": 31,
+                    "endColumn": 12,
+                    "endOffset": 1981
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 1986,
+                    "endLine": 35,
+                    "endColumn": 12,
+                    "endOffset": 2179
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 2184,
+                    "endLine": 39,
+                    "endColumn": 12,
+                    "endOffset": 2371
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2376,
+                    "endLine": 48,
+                    "endColumn": 12,
+                    "endOffset": 2908
+                },
+                "from": {
+                    "file": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\values\\styles.xml"
+                }
+            }
+        ]
+    }
+]

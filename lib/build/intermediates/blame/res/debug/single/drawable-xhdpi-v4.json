@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__divider.9.png",
+        "source": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\drawable-xhdpi\\crop__divider.9.png"
+    },
+    {
+        "merged": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
+        "source": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_cancel.png"
+    },
+    {
+        "merged": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__ic_done.png",
+        "source": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\drawable-xhdpi\\crop__ic_done.png"
+    },
+    {
+        "merged": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\crop__tile.png",
+        "source": "C:\\Extra\\Android\\projects\\Leafinformatics\\lib\\src\\main\\res\\drawable-xhdpi\\crop__tile.png"
+    }
+]
